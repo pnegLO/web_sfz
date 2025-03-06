@@ -1,0 +1,474 @@
+/* 全局样式重置 */
+body {
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    overflow-x: hidden;
+    font-size: 14px;
+}
+
+/* 主布局结构 */
+.el-container {
+    height: 100vh;
+}
+
+.el-header {
+    background-color: white;
+    color: #333;
+    line-height: 60px;
+    padding: 0 16px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 10;
+    height: 60px !important;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #3c88fd;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 侧边栏工具栏 */
+.el-aside {
+    background-color: white;
+    width: 220px !important;
+    box-shadow: 1px 0 5px rgba(0, 0, 0, 0.05);
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.el-menu {
+    border-right: none;
+}
+
+.el-menu-item-group__title {
+    padding-top: 10px;
+    color: #909399;
+    font-size: 12px;
+}
+
+.el-menu-item {
+    font-size: 13px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.el-menu-item.is-active {
+    background-color: #ecf5ff;
+}
+
+/* 主内容区 */
+.el-main {
+    padding: 0;
+    display: flex;
+    background-color: #f8f9fa;
+}
+
+/* 预览区域 */
+.preview-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background-color: white;
+    margin: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.preview-tabs {
+    display: flex;
+    border-bottom: 1px solid #eee;
+}
+
+.preview-tab {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666;
+}
+
+.preview-tab.active {
+    color: #3c88fd;
+    border-bottom: 2px solid #3c88fd;
+}
+
+.preview-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.preview-wrapper {
+    position: relative;
+    border: 1px solid #ddd;
+    background-color: white;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.size-indicators {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.horizontal-ruler {
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #909399;
+}
+
+.vertical-ruler {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    height: 100%;
+    width: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #909399;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+}
+
+.preview-image {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+}
+
+.upload-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #909399;
+    padding: 40px;
+}
+
+/* 右侧控制面板 */
+.control-panel {
+    width: 250px;
+    background-color: white;
+    border-left: 1px solid #eee;
+    padding: 0;
+    overflow-y: auto;
+}
+
+.panel-header {
+    padding: 15px;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+}
+
+.panel-section {
+    padding: 15px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.panel-title {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+/* 色彩选择器 */
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.color-swatch {
+    width: 100%;
+    padding-bottom: 100%;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    border: 2px solid transparent;
+}
+
+.color-swatch:hover {
+    transform: scale(1.05);
+}
+
+.color-swatch.active {
+    border-color: #3c88fd;
+}
+
+/* 预定义颜色样式 */
+.checkerboard {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFElEQVR42mNgIBEUFBT8Z8AEhpoCABxWA/XknK3MAAAAAElFTkSuQmCC");
+    background-repeat: repeat;
+}
+
+.white-bg {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+.light-blue-bg {
+    background-color: #a6d0ff;
+}
+
+.blue-bg {
+    background-color: #0057ff;
+}
+
+.red-bg {
+    background-color: #ff0043;
+}
+
+.gray-bg {
+    background-color: #d0d0d0;
+}
+
+.gradient1 {
+    background: linear-gradient(to right, #f6d365, #fda085);
+}
+
+.gradient2 {
+    background: linear-gradient(to right, #a6c0fe, #f68084);
+}
+
+.gradient3 {
+    background: linear-gradient(to right, #84fab0, #8fd3f4);
+}
+
+.custom-color {
+    background-image: linear-gradient(45deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f);
+}
+
+/* 尺寸选择 */
+.size-row {
+    margin-bottom: 10px;
+}
+
+.size-item {
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.size-item:hover {
+    border-color: #3c88fd;
+}
+
+.size-item.active {
+    border-color: #3c88fd;
+    background-color: #ecf5ff;
+}
+
+.size-name {
+    font-weight: 500;
+}
+
+.size-dimensions {
+    font-size: 12px;
+    color: #909399;
+    margin-top: 4px;
+}
+
+/* 上传区域 */
+.upload-area {
+    width: 100%;
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #fafafa;
+    transition: all 0.3s;
+}
+
+.upload-area:hover {
+    border-color: #3c88fd;
+}
+
+/* 底部操作按钮 */
+.action-buttons {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+/* 加载指示器 */
+.el-loading-mask {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* 自适应媒体查询 */
+@media (max-width: 768px) {
+    .el-main {
+        flex-direction: column;
+    }
+    
+    .control-panel {
+        width: 100%;
+        height: 200px;
+    }
+}
+
+/* 背景色快速选择 */
+.quick-color-selector {
+    padding: 10px;
+}
+
+.color-section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.color-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.color-item {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+.color-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.color-label {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    font-size: 12px;
+}
+
+.custom-color-picker {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.color-preview {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* 尺寸卡片选择器 */
+.size-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+.size-card {
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+    border: 1px solid #eaeaea;
+    transition: all 0.2s;
+}
+
+.size-card:hover {
+    border-color: #3c88fd;
+    background-color: #f5f9ff;
+}
+
+.size-card.active {
+    border-color: #3c88fd;
+    background-color: #ecf5ff;
+    box-shadow: 0 2px 6px rgba(60, 136, 253, 0.15);
+}
+
+.size-name {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.size-dimensions {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 3px;
+}
+
+.size-pixels {
+    font-size: 12px;
+    color: #999;
+}
+
+/* 右侧面板颜色选择 */
+.color-selection {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+/* 自定义背景图片上传 */
+.bg-upload {
+    margin: 10px 0;
+}
+
+/* 添加背景图片类 */
+.custom-image {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'/%3E%3Cpath d='M4.828 21l-.02.02-.021-.02H2.992A.993.993 0 0 1 2 20.007V3.993A1 1 0 0 1 2.992 3h18.016c.548 0 .992.445.992.993v16.014a1 1 0 0 1-.992.993H4.828zM20 15V5H4v14L14 9l6 6zm0 2.828l-6-6L6.828 19H20v-1.172zM8 11a2 2 0 1 1 0-4 2 2 0 0 1 0 4z' fill='rgba(0,0,0,0.5)'/%3E%3C/svg%3E");
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f5f5f5;
+} 

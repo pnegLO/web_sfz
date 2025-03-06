@@ -1,0 +1,53 @@
+:root {
+    /* 主题颜色 */
+    --primary-color: #3c88fd;
+    --primary-light: #e9f1ff;
+    --primary-dark: #2b6bcf;
+    --secondary-color: #5c6bc0;
+    
+    /* 中性色 */
+    --dark-color: #2c3e50;
+    --text-color: #333333;
+    --text-light: #666666;
+    --light-color: #ffffff;
+    --gray-color: #f5f7fa;
+    --gray-light: #ecf0f5;
+    --gray-medium: #dcdfe6;
+    --gray-dark: #909399;
+    
+    /* 状态颜色 */
+    --success-color: #67c23a;
+    --warning-color: #e6a23c;
+    --danger-color: #f56c6c;
+    --info-color: #909399;
+    
+    /* 布局参数 */
+    --header-height: 60px;
+    --sidebar-width: 220px;
+    --border-radius: 8px;
+    --small-border-radius: 4px;
+    --card-padding: 20px;
+    
+    /* 阴影 */
+    --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --hover-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    --button-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    
+    /* 动画 */
+    --transition: all 0.3s ease;
+    --bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 暗黑模式主题变量 */
+.dark-theme {
+    --primary-color: #4b85e4;
+    --primary-light: #2a3a5a;
+    --dark-color: #f5f7fa;
+    --text-color: #e0e0e0;
+    --text-light: #b0b0b0;
+    --light-color: #1e1e1e;
+    --gray-color: #2c2c2c;
+    --gray-light: #333333;
+    --gray-medium: #4a4a4a;
+    --gray-dark: #b0b0b0;
+} 

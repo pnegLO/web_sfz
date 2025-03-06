@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>证件照个性化处理平台</title>
+    <!-- 引入Element UI -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入自定义CSS -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/main.css">
+    <!-- 引入第三方库 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui/lib/index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-container>
+            <!-- 顶部导航栏 -->
+            <el-header>
+                <div class="header-content">
+                    <div class="header-logo">
+                        <i class="el-icon-picture"></i> 证件照个性化处理平台
+                    </div>
+                    <div class="header-actions">
+                        <el-button size="small" plain @click="handleReset">
+                            <i class="el-icon-refresh-left"></i> 重置
+                        </el-button>
+                        <el-button size="small" type="primary" @click="downloadImage" :disabled="!processedImageUrl">
+                            <i class="el-icon-download"></i> 保存
+                        </el-button>
+                    </div>
+                </div>
+            </el-header>
+            
+            <el-container>
+                <!-- 左侧菜单 -->
+                <el-aside width="220px">
+                    <side-menu
+                        @color-change="handleColorChange"
+                        @size-change="selectSize"
+                        @quick-color-select="handleQuickColorSelect"
+                        @custom-color-select="handleCustomColorSelect"
+                        @request-image-upload="requestImageUpload">
+                    </side-menu>
+                </el-aside>
+                
+                <!-- 主内容区 -->
+                <el-main>
+                    <!-- 图片预览区域 -->
+                    <photo-preview
+                        :original-image-url="originalImageUrl"
+                        :processed-image-url="processedImageUrl"
+                        :selected-size="selectedSize">
+                    </photo-preview>
+                    
+                    <!-- 右侧操作面板 -->
+                    <div class="action-panel">
+                        <div class="panel-section">
+                            <h3>上传照片</h3>
+                            <el-upload
+                                class="upload-area"
+                                drag
+                                action="#"
+                                :http-request="handleManualUpload"
+                                :on-change="handleFileChange"
+                                :auto-upload="false">
+                                <i class="el-icon-upload"></i>
+                                <div class="el-upload__text">拖拽文件或<em>点击上传</em></div>
+                                <div class="el-upload__tip" slot="tip">支持JPG/PNG格式，不超过10MB</div>
+                            </el-upload>
+                        </div>
+                        
+                        <div class="panel-section" v-if="selectedColor === 'custom'">
+                            <h3>自定义背景颜色</h3>
+                            <div class="color-selection">
+                                <el-color-picker 
+                                    v-model="customColor" 
+                                    show-alpha 
+                                    @change="onCustomColorChange">
+                                </el-color-picker>
+                                <div class="color-preview" :style="{ backgroundColor: customColor }"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="panel-section" v-if="selectedColor === 'image'">
+                            <h3>自定义背景图片</h3>
+                            <el-upload
+                                class="bg-upload"
+                                action="#"
+                                :http-request="handleBgImageUpload"
+                                :on-change="handleBgImageChange"
+                                :auto-upload="false"
+                                :file-list="bgImageFileList">
+                                <el-button size="small" type="primary">选择图片</el-button>
+                                <div class="el-upload__tip" slot="tip">选择用作背景的图片</div>
+                            </el-upload>
+                        </div>
+                        
+                        <div class="panel-section" v-if="originalImageUrl">
+                            <el-button type="primary" @click="submitUpload" :loading="uploading" style="width: 100%;">
+                                {{ uploading ? '处理中...' : '开始处理' }}
+                            </el-button>
+                        </div>
+                    </div>
+                </el-main>
+            </el-container>
+        </el-container>
+    </div>
+
+    <!-- 引入自定义JS -->
+    <script src="js/utils.js"></script>
+    <script src="js/components.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html> 
